@@ -1,8 +1,7 @@
 // Axis Tests.swift
 
-import Testing
-
 import Axis_Primitives
+import Testing
 
 // MARK: - Axis - Static Functions
 
@@ -125,6 +124,24 @@ struct `Axis - Protocol Conformances` {
     func `Hashable produces unique hashes`() {
         let set: Set<Axis<3>> = [.primary, .secondary, .tertiary, .primary]
         #expect(set.count == 3)
+    }
+}
+
+// MARK: - Axis - Comparison
+
+@Suite
+struct `Axis - Comparison` {
+    @Test
+    func `orders by index`() {
+        #expect(Axis<3>.primary < Axis<3>.secondary)
+        #expect(Axis<3>.secondary < Axis<3>.tertiary)
+        #expect(Axis<3>.tertiary > Axis<3>.primary)
+        #expect(!(Axis<3>.tertiary < Axis<3>.primary))
+    }
+
+    @Test
+    func `sorting orders by index`() {
+        #expect([Axis<3>.tertiary, .primary, .secondary].sorted() == [.primary, .secondary, .tertiary])
     }
 }
 

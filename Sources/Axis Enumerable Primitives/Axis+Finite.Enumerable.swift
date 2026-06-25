@@ -10,7 +10,7 @@ import Ordinal_Primitives
 extension Axis: Finite.Enumerable {
     /// Number of axes in N-dimensional space.
     @inlinable
-    public static var count: Cardinal { Cardinal.init(integerLiteral: UInt(N)) }
+    public static var count: Cardinal { Cardinal(integerLiteral: UInt(N)) }
 
     /// Ordinal of this axis (0 to N-1).
     @inlinable

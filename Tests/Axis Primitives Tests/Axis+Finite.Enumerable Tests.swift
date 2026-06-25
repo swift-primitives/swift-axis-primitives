@@ -1,9 +1,8 @@
 // Axis+Finite.Enumerable Tests.swift
 
+import Axis_Primitives
 import Axis_Primitives_Test_Support
 import Testing
-
-import Axis_Primitives
 
 // MARK: - Axis+Finite.Enumerable - Enumerable
 

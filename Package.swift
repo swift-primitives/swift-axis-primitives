@@ -19,6 +19,18 @@ let package = Package(
 
         // MARK: - Sub-namespace targets
         .library(
+            name: "Axis Equation Primitives",
+            targets: ["Axis Equation Primitives"]
+        ),
+        .library(
+            name: "Axis Hash Primitives",
+            targets: ["Axis Hash Primitives"]
+        ),
+        .library(
+            name: "Axis Comparison Primitives",
+            targets: ["Axis Comparison Primitives"]
+        ),
+        .library(
             name: "Axis Enumerable Primitives",
             targets: ["Axis Enumerable Primitives"]
         ),
@@ -36,17 +48,43 @@ let package = Package(
         ),
     ],
     dependencies: [
+        .package(url: "https://github.com/swift-primitives/swift-equation-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-hash-primitives.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-comparison-primitives.git", branch: "main"),
         .package(url: "https://github.com/swift-primitives/swift-finite-primitives.git", branch: "main"),
         .package(url: "https://github.com/swift-primitives/swift-ordinal-primitives.git", branch: "main"),
     ],
     targets: [
-        // MARK: - Namespace
+        // MARK: - Namespace (zero external dependencies — [MOD-017])
         .target(
             name: "Axis Primitive",
             dependencies: []
         ),
 
         // MARK: - Sub-namespace targets (per [MOD-031])
+        // Institute Equatable/Hashable/Comparable twins:
+        .target(
+            name: "Axis Equation Primitives",
+            dependencies: [
+                "Axis Primitive",
+                .product(name: "Equation Primitives", package: "swift-equation-primitives"),
+            ]
+        ),
+        .target(
+            name: "Axis Hash Primitives",
+            dependencies: [
+                "Axis Primitive",
+                .product(name: "Hash Primitives", package: "swift-hash-primitives"),
+            ]
+        ),
+        .target(
+            name: "Axis Comparison Primitives",
+            dependencies: [
+                "Axis Primitive",
+                .product(name: "Comparison Primitives", package: "swift-comparison-primitives"),
+            ]
+        ),
+        // Finite.Enumerable conformance (2N inhabitants enumeration):
         .target(
             name: "Axis Enumerable Primitives",
             dependencies: [
@@ -61,6 +99,9 @@ let package = Package(
             name: "Axis Primitives",
             dependencies: [
                 "Axis Primitive",
+                "Axis Equation Primitives",
+                "Axis Hash Primitives",
+                "Axis Comparison Primitives",
                 "Axis Enumerable Primitives",
             ]
         ),
