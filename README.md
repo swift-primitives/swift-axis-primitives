@@ -58,7 +58,7 @@ Requires Swift 6.3.1 and macOS 26 / iOS 26 / tvOS 26 / watchOS 26 / visionOS 26 
 
 ## Architecture
 
-The root `Axis Primitive` target is zero-dependency ([MOD-017]); each protocol conformance lives in its own sub-target so consumers import only what they use.
+The root `Axis Primitive` target is zero-dependency; each protocol conformance lives in its own sub-target so consumers import only what they use.
 
 | Product | Depends on | When to import |
 |---------|-----------|----------------|
