@@ -115,7 +115,7 @@ extension Axis {
         public init(from decoder: any Decoder) throws(any Swift.Error) {
             let container = try decoder.singleValueContainer()
             let value = try container.decode(Int.self)
-            do {
+            do throws(Self.Error) {
                 self = try Self(value)
             } catch {
                 throw DecodingError.dataCorrupted(
