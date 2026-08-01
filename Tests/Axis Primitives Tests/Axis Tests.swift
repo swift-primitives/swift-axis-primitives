@@ -7,6 +7,10 @@ import Testing
 
 @Suite
 struct `Axis - Static Functions` {
+    @Suite struct Unit {}
+    @Suite struct `Edge Case` {}
+    @Suite struct Integration {}
+
     @Test(arguments: [Axis<2>.primary, Axis<2>.secondary])
     func `perpendicular is involution in 2D`(axis: Axis<2>) {
         let perp1 = Axis<2>.perpendicular(of: axis)
@@ -29,6 +33,10 @@ struct `Axis - Static Functions` {
 
 @Suite
 struct `Axis - Properties` {
+    @Suite struct Unit {}
+    @Suite struct `Edge Case` {}
+    @Suite struct Integration {}
+
     @Test(arguments: [Axis<2>.primary, Axis<2>.secondary])
     func `perpendicular property delegates to static function`(axis: Axis<2>) {
         #expect(axis.perpendicular == Axis<2>.perpendicular(of: axis))
@@ -36,7 +44,12 @@ struct `Axis - Properties` {
 
     @Test(arguments: [0, 1, 2, 3])
     func `underlying accessor`(value: Int) {
-        let axis: Axis<5>? = try? Axis(value)
+        let axis: Axis<5>?
+        do throws(Axis<5>.Error) {
+            axis = try Axis(value)
+        } catch {
+            axis = nil
+        }
         #expect(axis?.underlying == value)
     }
 }
@@ -45,16 +58,30 @@ struct `Axis - Properties` {
 
 @Suite
 struct `Axis - Initializers` {
+    @Suite struct Unit {}
+    @Suite struct `Edge Case` {}
+    @Suite struct Integration {}
+
     @Test(arguments: [0, 1, 2, 3, 4])
     func `init with valid index`(value: Int) {
-        let axis: Axis<5>? = try? Axis(value)
+        let axis: Axis<5>?
+        do throws(Axis<5>.Error) {
+            axis = try Axis(value)
+        } catch {
+            axis = nil
+        }
         #expect(axis != nil)
         #expect(axis?.underlying == value)
     }
 
     @Test(arguments: [-1, 5, 10])
     func `init with invalid index returns nil`(value: Int) {
-        let axis: Axis<5>? = try? Axis(value)
+        let axis: Axis<5>?
+        do throws(Axis<5>.Error) {
+            axis = try Axis(value)
+        } catch {
+            axis = nil
+        }
         #expect(axis == nil)
     }
 
@@ -77,6 +104,10 @@ struct `Axis - Initializers` {
 
 @Suite
 struct `Axis - Dimension-Specific Constants` {
+    @Suite struct Unit {}
+    @Suite struct `Edge Case` {}
+    @Suite struct Integration {}
+
     @Test
     func `1D has only primary`() {
         #expect(Axis<1>.primary.underlying == 0)
@@ -108,6 +139,10 @@ struct `Axis - Dimension-Specific Constants` {
 
 @Suite
 struct `Axis - Protocol Conformances` {
+    @Suite struct Unit {}
+    @Suite struct `Edge Case` {}
+    @Suite struct Integration {}
+
     @Test
     func `Equatable reflexivity`() {
         #expect(Axis<2>.primary == Axis<2>.primary)
@@ -131,6 +166,10 @@ struct `Axis - Protocol Conformances` {
 
 @Suite
 struct `Axis - Comparison` {
+    @Suite struct Unit {}
+    @Suite struct `Edge Case` {}
+    @Suite struct Integration {}
+
     @Test
     func `orders by index`() {
         #expect(Axis<3>.primary < Axis<3>.secondary)
@@ -149,6 +188,10 @@ struct `Axis - Comparison` {
 
 @Suite
 struct `Axis - Type Safety` {
+    @Suite struct Unit {}
+    @Suite struct `Edge Case` {}
+    @Suite struct Integration {}
+
     @Test
     func `Axes of different dimensions have same index but different types`() {
         let axis2: Axis<2> = .primary

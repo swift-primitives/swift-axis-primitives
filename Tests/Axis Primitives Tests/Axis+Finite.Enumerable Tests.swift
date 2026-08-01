@@ -8,6 +8,10 @@ import Testing
 
 @Suite
 struct `Axis+Finite.Enumerable - Enumerable` {
+    @Suite struct Unit {}
+    @Suite struct `Edge Case` {}
+    @Suite struct Integration {}
+
     @Test
     func `count equals dimension`() {
         #expect(Axis<1>.count == 1)
@@ -28,17 +32,32 @@ struct `Axis+Finite.Enumerable - Enumerable` {
 
     @Test(arguments: [0, 1, 2])
     func `init from index creates correct axis`(index: Int) {
-        let axis: Axis<3>? = try? Axis(index)
+        let axis: Axis<3>?
+        do throws(Axis<3>.Error) {
+            axis = try Axis(index)
+        } catch {
+            axis = nil
+        }
         #expect(axis != nil)
         #expect(axis?.underlying == index)
     }
 
     @Test(arguments: [0, 1, 2, 3])
     func `index roundtrip`(index: Int) {
-        let axis: Axis<4>? = try? Axis(index)
+        let axis: Axis<4>?
+        do throws(Axis<4>.Error) {
+            axis = try Axis(index)
+        } catch {
+            axis = nil
+        }
         #expect(axis != nil)
         #expect(axis?.underlying == index)
-        let reconstructed: Axis<4>? = try? Axis(axis!.underlying)
+        let reconstructed: Axis<4>?
+        do throws(Axis<4>.Error) {
+            reconstructed = try Axis(axis!.underlying)
+        } catch {
+            reconstructed = nil
+        }
         #expect(reconstructed?.underlying == axis?.underlying)
     }
 }
@@ -47,6 +66,10 @@ struct `Axis+Finite.Enumerable - Enumerable` {
 
 @Suite
 struct `Axis+Finite.Enumerable - AllCases` {
+    @Suite struct Unit {}
+    @Suite struct `Edge Case` {}
+    @Suite struct Integration {}
+
     @Test
     func `allCases for 1D has 1 element`() {
         let allCases = Array(Axis<1>.allCases)
@@ -94,6 +117,10 @@ struct `Axis+Finite.Enumerable - AllCases` {
 
 @Suite
 struct `Axis+Finite.Enumerable - Iteration` {
+    @Suite struct Unit {}
+    @Suite struct `Edge Case` {}
+    @Suite struct Integration {}
+
     @Test
     func `for-in loop over allCases`() {
         var indices: [Int] = []

@@ -29,12 +29,6 @@ public struct Axis<let N: Int>: Sendable {
     /// Zero-based index of this axis (0 to N-1).
     public let underlying: Int
 
-    /// Error thrown when axis construction fails.
-    public enum Error: Swift.Error, Hashable, Sendable {
-        /// The provided value was outside the valid range `0..<N`.
-        case outOfBounds(Int)
-    }
-
     /// Creates an axis from a raw index.
     ///
     /// - Parameter underlying: The axis index.
@@ -54,6 +48,11 @@ public struct Axis<let N: Int>: Sendable {
     public init(_unchecked: Void, _ underlying: Int) {
         self.underlying = underlying
     }
+}
+
+extension Axis {
+    /// Error thrown when axis construction fails.
+    public typealias Error = __AxisError
 }
 
 // MARK: - Equality, Hashing, Ordering
