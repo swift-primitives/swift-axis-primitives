@@ -3,5 +3,5 @@
 // (Ordinal, which chains to Cardinal) so Cardinal/Ordinal ExpressibleByIntegerLiteral
 // conformances are visible in test files comparing `count`/`ordinal` to integer literals.
 
-@_exported public import Ordinal_Primitives_Test_Support
 internal import Axis_Primitives
+@_exported public import Ordinal_Primitives_Test_Support
