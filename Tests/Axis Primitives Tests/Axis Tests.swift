@@ -180,7 +180,9 @@ struct `Axis - Comparison` {
 
     @Test
     func `sorting orders by index`() {
-        #expect([Axis<3>.tertiary, .primary, .secondary].sorted() == [.primary, .secondary, .tertiary])
+        #expect(
+            [Axis<3>.tertiary, .primary, .secondary].sorted() == [.primary, .secondary, .tertiary]
+        )
     }
 }
 
