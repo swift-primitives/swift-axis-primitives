@@ -59,10 +59,9 @@ extension Axis {
 
 // The full ==/</<=/>/>= operator set + hash(into:) is declared here in the type's own
 // module so it witnesses both any stdlib conformance and the institute
-// `Equation.Protocol` / `Hash.Protocol` / `Comparison.Protocol` twins, whose <6.4 fork
-// forms require explicitly-declared `borrowing` witnesses. The twin conformances (and the
-// gated `#if swift(<6.4)` stdlib `Hashable` / `Comparable`) live in the
-// `Axis Equation/Hash/Comparison Primitives` sub-targets. Axes order by `underlying`.
+// `Equation.Protocol` / `Hash.Protocol` / `Comparison.Protocol` twins. Those
+// conformances live in the `Axis Equation/Hash/Comparison Primitives` sub-targets.
+// Axes order by `underlying`.
 
 extension Axis {
     /// Returns whether two axes have the same `underlying` index.
