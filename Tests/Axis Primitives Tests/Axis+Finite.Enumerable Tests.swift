@@ -1,10 +1,6 @@
-// Axis+Finite.Enumerable Tests.swift
-
 import Axis_Primitives
 import Axis_Primitives_Test_Support
 import Testing
-
-// MARK: - Axis+Finite.Enumerable - Enumerable
 
 @Suite
 struct `Axis+Finite.Enumerable - Enumerable` {
@@ -62,8 +58,6 @@ struct `Axis+Finite.Enumerable - Enumerable` {
     }
 }
 
-// MARK: - Axis+Finite.Enumerable - AllCases
-
 @Suite
 struct `Axis+Finite.Enumerable - AllCases` {
     @Suite struct Unit {}
@@ -112,8 +106,6 @@ struct `Axis+Finite.Enumerable - AllCases` {
         }
     }
 }
-
-// MARK: - Axis+Finite.Enumerable - Iteration
 
 @Suite
 struct `Axis+Finite.Enumerable - Iteration` {

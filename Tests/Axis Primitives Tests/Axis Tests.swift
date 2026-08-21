@@ -1,9 +1,5 @@
-// Axis Tests.swift
-
 import Axis_Primitives
 import Testing
-
-// MARK: - Axis - Static Functions
 
 @Suite
 struct `Axis - Static Functions` {
@@ -29,8 +25,6 @@ struct `Axis - Static Functions` {
     }
 }
 
-// MARK: - Axis - Properties
-
 @Suite
 struct `Axis - Properties` {
     @Suite struct Unit {}
@@ -53,8 +47,6 @@ struct `Axis - Properties` {
         #expect(axis?.underlying == value)
     }
 }
-
-// MARK: - Axis - Initializers
 
 @Suite
 struct `Axis - Initializers` {
@@ -100,8 +92,6 @@ struct `Axis - Initializers` {
     }
 }
 
-// MARK: - Axis - Dimension-Specific Constants
-
 @Suite
 struct `Axis - Dimension-Specific Constants` {
     @Suite struct Unit {}
@@ -135,8 +125,6 @@ struct `Axis - Dimension-Specific Constants` {
     }
 }
 
-// MARK: - Axis - Protocol Conformances
-
 @Suite
 struct `Axis - Protocol Conformances` {
     @Suite struct Unit {}
@@ -162,8 +150,6 @@ struct `Axis - Protocol Conformances` {
     }
 }
 
-// MARK: - Axis - Comparison
-
 @Suite
 struct `Axis - Comparison` {
     @Suite struct Unit {}
@@ -186,8 +172,6 @@ struct `Axis - Comparison` {
     }
 }
 
-// MARK: - Axis - Type Safety
-
 @Suite
 struct `Axis - Type Safety` {
     @Suite struct Unit {}
@@ -199,12 +183,9 @@ struct `Axis - Type Safety` {
         let axis2: Axis<2> = .primary
         let axis3: Axis<3> = .primary
 
-        // Same index value
         #expect(axis2.underlying == axis3.underlying)
         #expect(axis2.underlying == 0)
 
-        // But different types — cannot compare directly (compile-time safety):
-        // axis2 == axis3  // would not compile
     }
 
     @Test
@@ -216,8 +197,5 @@ struct `Axis - Type Safety` {
         let axis2: Axis<2> = .secondary
         #expect(process2D(axis2) == 1)
 
-        // This would NOT compile — type safety prevents dimensional mismatch:
-        // let axis3: Axis<3> = .secondary
-        // process2D(axis3)  // Error: cannot convert Axis<3> to Axis<2>
     }
 }

@@ -11,13 +11,12 @@ let package = Package(
         .visionOS(.v27),
     ],
     products: [
-        // MARK: - Namespace
+
         .library(
             name: "Axis Primitive",
             targets: ["Axis Primitive"]
         ),
 
-        // MARK: - Sub-namespace targets
         .library(
             name: "Axis Equation Primitives",
             targets: ["Axis Equation Primitives"]
@@ -35,13 +34,11 @@ let package = Package(
             targets: ["Axis Enumerable Primitives"]
         ),
 
-        // MARK: - Umbrella
         .library(
             name: "Axis Primitives",
             targets: ["Axis Primitives"]
         ),
 
-        // MARK: - Test Support
         .library(
             name: "Axis Primitives Test Support",
             targets: ["Axis Primitives Test Support"]
@@ -70,14 +67,12 @@ let package = Package(
         ),
     ],
     targets: [
-        // MARK: - Namespace (zero external dependencies — [MOD-017])
+
         .target(
             name: "Axis Primitive",
             dependencies: []
         ),
 
-        // MARK: - Sub-namespace targets (per [MOD-031])
-        // Institute Equatable/Hashable/Comparable twins:
         .target(
             name: "Axis Equation Primitives",
             dependencies: [
@@ -99,7 +94,7 @@ let package = Package(
                 .product(name: "Comparison Primitives", package: "swift-comparison-primitives"),
             ]
         ),
-        // Finite.Enumerable conformance (2N inhabitants enumeration):
+
         .target(
             name: "Axis Enumerable Primitives",
             dependencies: [
@@ -109,7 +104,6 @@ let package = Package(
             ]
         ),
 
-        // MARK: - Umbrella
         .target(
             name: "Axis Primitives",
             dependencies: [
@@ -121,7 +115,6 @@ let package = Package(
             ]
         ),
 
-        // MARK: - Test Support
         .target(
             name: "Axis Primitives Test Support",
             dependencies: [
@@ -134,7 +127,6 @@ let package = Package(
             path: "Tests/Support"
         ),
 
-        // MARK: - Tests
         .testTarget(
             name: "Axis Primitives Tests",
             dependencies: [
